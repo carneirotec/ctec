@@ -26,6 +26,8 @@ nld_output_file
 nld_parse_args
 nld_print_stats
 nld_realloc
+nld_relocate
+nld_run
 nld_set_error_func
 nld_set_lib_path
 nld_set_options
@@ -33,4 +35,3 @@ nld_set_output_type
 nld_strdup
 nld_undefine_symbol
 nld_warning
-pe_free_imports

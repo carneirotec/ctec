@@ -5,7 +5,7 @@
 @echo off
 setlocal
 if (%1)==(-clean) goto :cleanup
-set CC=gcc
+set CC=C:\Users\Anildo\Downloads\tcc-0.9.27-win64-bin\tcc\tcc.exe
 set /p VERSION= < ..\VERSION
 set INST=
 set BIN=
@@ -119,10 +119,12 @@ echo>> ..\config.h #endif
 for %%f in (*nld.exe *nld.dll) do @del %%f
 
 :compiler
-%CC% -o libnld.dll -shared ..\libnld.c %D% -Dlibnld_AS_DLL
+%CC% -o libnld.dll -shared ..\libnld.c %D% -DLIBNILDO_AS_DLL
 @if errorlevel 1 goto :the_end
-%CC% -o nld.exe ..\nld.c libnld.dll %D% -DONE_SOURCE"=0"
+%CC% -o nld.exe ..\nld.c %D%
+@if errorlevel 1 goto :the_end
 %CC% -o %PX%-nld.exe ..\nld.c %DX%
+@if errorlevel 1 goto :the_end
 
 @if (%EXES_ONLY%)==(yes) goto :files-done
 
